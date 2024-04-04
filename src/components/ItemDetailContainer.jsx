@@ -8,7 +8,7 @@ import data from '../data/products.json';
 export const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
 
-  const { id } = useParams();
+  const { itemId } = useParams();
 
   useEffect(() => {
     const get = new Promise((resolve, reject) => {
@@ -16,11 +16,11 @@ export const ItemDetailContainer = () => {
     });
 
     get.then((data) => {
-        const filter = data.find ((product) => product.id === Number(id));
+        const filter = data.find ((product) => product.id === Number(itemId));
 
         setProduct(filter);
     });
-  }, [id]);
+  }, [itemId]);
   
   if (!product) return <div>Cargando...</div>;
 
